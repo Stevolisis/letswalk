@@ -26,8 +26,7 @@ const authorizedUsers=[
 
 
 app.get('/',(req,res)=>{
-    console.log(process.cwd())
-    res.send('__dirname'+'/index.html');
+    res.sendFile(__dirname+'/index.html');
 })
 
 
