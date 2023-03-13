@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 const authorizedUsers=[
     {regNo:'18/000155U/2',password:'12345'},
     {regNo:'18/000255U/2',password:'123456'},
-    {regNo:'18/000355U/2',password:'123457'},
+    {regNo:'18/000355eU/2',password:'123457'},
 ];
 
 
@@ -33,14 +33,12 @@ app.post('/login',(req,res)=>{
 
     try{
         if(regNo!==''&&password!==''){
-            authorizedUsers.forEach(user=>{
-                if(user.regNo===regNo&&user.password===password){
-                    res.json({status:'success'})
-                }else{
-                    res.json({status:'Invalid credentials'});
-                }
-            })
-    
+            const isValid=authorizedUsers.some(user=>user.regNo===regNo&&user.password===password);
+            if(isValid){
+                res.json({status:'success'})
+            }else{
+                res.json({status:'Invalid credentials'});
+            }
         }else{
             res.json({status:'error field not Found'})
         }
