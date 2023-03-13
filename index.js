@@ -15,10 +15,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use(express.json({limit:'1mb'}));
 app.use("/static",express.static('public'));
-app.use(cors({
-	origin:'*',
-	credentials:true
-}));
+app.use(cors());
 
 const authorizedUsers=[
     {regNo:'18/000155U/2',password:'12345'},
