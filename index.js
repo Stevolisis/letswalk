@@ -13,8 +13,8 @@ app.listen(80,(res,err)=>{
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
-app.use(express.json({limit:'1mb'}));
-app.use("/static",express.static('public'));
+// app.use(express.json({limit:'1mb'}));
+// app.use("/static",express.static('public'));
 app.use(cors());
 
 const authorizedUsers=[
