@@ -38,14 +38,14 @@ app.post('/login',(req,res)=>{
         if(regNo!==''&&password!==''){
             const isValid=authorizedUsers.some(user=>user.regNo===regNo&&user.password===password);
             if(isValid){
-                res.json({status:'success'})
+                res.status(200).json({status:'success'})
             }else{
-                res.json({status:'Invalid credentials'});
+                res.status(401).json({status:'Invalid credentials'});
             }
         }else{
-            res.json({status:'error field not Found'})
+            res.status(404).json({status:'error field not Found'})
         }
     }catch(err){
-        res.json({status:'error occured',message:err.message})
+        res.status(404).json({status:'error occured',message:err.message})
     }
 })
