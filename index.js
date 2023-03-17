@@ -2,6 +2,9 @@ const express=require('express');
 const app=express();
 const bodyParser=require('body-parser')
 const cors=require("cors");
+var admin = require("firebase-admin");
+var serviceAccount = require("path/to/serviceAccountKey.json");
+require('dotenv').config();
 
 app.listen(80,(res,err)=>{
     if(err){
@@ -13,9 +16,12 @@ app.listen(80,(res,err)=>{
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
-// app.use(express.json({limit:'1mb'}));
-// app.use("/static",express.static('public'));
 app.use(cors());
+
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
 
 const authorizedUsers=[
     {regNo:'18/000155U/2',password:'12345'},
