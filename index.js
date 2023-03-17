@@ -3,7 +3,7 @@ const app=express();
 const bodyParser=require('body-parser')
 const cors=require("cors");
 var admin = require("firebase-admin");
-var serviceAccount = require("path/to/serviceAccountKey.json");
+var serviceAccount = require("./firebase.json");
 require('dotenv').config();
 
 app.listen(80,(res,err)=>{
@@ -17,11 +17,10 @@ app.listen(80,(res,err)=>{
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use(cors());
-
-
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
+
 
 const authorizedUsers=[
     {regNo:'18/000155U/2',password:'12345'},
@@ -36,15 +35,18 @@ app.get('/',(req,res)=>{
 })
 
 
-app.post('/login',(req,res)=>{
+app.post('/login',async(req,res)=>{
     const {regNo,password}=req.body;
-    console.log(req.body)
+    console.log(req.body);
+
 
     try{
         if(regNo!==''&&password!==''){
             const isValid=authorizedUsers.some(user=>user.regNo===regNo&&user.password===password);
+
             if(isValid){
-                res.status(200).json({status:'success'})
+                const token=await admin.auth().createCustomToken('CustomToken'+Math.random(),{user:regNo});
+                res.status(200).json({status:'success',token:token})
             }else{
                 res.status(401).json({status:'Invalid credentials'});
             }
