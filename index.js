@@ -6,7 +6,7 @@ var admin = require("firebase-admin");
 var serviceAccount = require("./firebase.json");
 require('dotenv').config();
 
-app.listen(80,(res,err)=>{
+app.listen(3000,(res,err)=>{
     if(err){
         console.log(err)
     }else{
