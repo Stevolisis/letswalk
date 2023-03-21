@@ -33,7 +33,7 @@ const authorizedUsers=[
 app.get('/',(req,res)=>{
     res.sendFile(__dirname+'/index.html');
 })
-
+//
 
 app.post('/login',async(req,res)=>{
     const {regNo,password}=req.body;
