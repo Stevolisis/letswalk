@@ -23,9 +23,9 @@ admin.initializeApp({
 
 //
 const authorizedUsers=[
-    {regNo:'18/000155U/2',password:'12345'},
-    {regNo:'18/000255U/2',password:'123456'},
-    {regNo:'18/000355eU/2',password:'123457'},
+    {regNo:'18/000155U/2',password:'12345', name:"Salamatu Idris"},
+    {regNo:'18/000255U/2',password:'123456', name: "Kayode Usman"},
+    {regNo:'18/000355eU/2',password:'123457', name: "Cladius Wunti"},
 ];
 
 
@@ -43,10 +43,15 @@ app.post('/login',async(req,res)=>{
     try{
         if(regNo!==''&&password!==''){
             const isValid=authorizedUsers.some(user=>user.regNo===regNo&&user.password===password);
+            
 
             if(isValid){
                 const token=await admin.auth().createCustomToken('CustomToken'+Math.random(),{user:regNo});
-                res.status(200).json({status:'success',token:token})
+
+                const d = authorizedUsers.find(({regNo : xRegNo}) => {
+                    return xRegNo == regNo;
+                })
+                res.status(200).json({status:'success', token:token, username: d})
             }else{
                 res.status(401).json({status:'Invalid credentials'});
             }
