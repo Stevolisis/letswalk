@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1057912974725",
+    "project_id": "let-s-walk-gdsc-dd902",
+    "storage_bucket": "let-s-walk-gdsc-dd902.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1057912974725:android:d2c5dcf9c514a78b1c28ec",
+        "android_client_info": {
+          "package_name": "com.ping"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1057912974725-2fvjkhn6q58gn86i77ohlplllll5baue.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDeZqKCZf7APjovPx7MUv-orp7iyfEsxs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1057912974725-2fvjkhn6q58gn86i77ohlplllll5baue.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
