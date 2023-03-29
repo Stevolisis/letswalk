@@ -48,10 +48,11 @@ app.post('/login',async(req,res)=>{
             if(isValid){
                 const token=await admin.auth().createCustomToken('CustomToken'+Math.random(),{user:regNo});
 
-                const d = authorizedUsers.find(({regNo : xRegNo}) => {
+                const user = authorizedUsers.find(({regNo : xRegNo}) => {
                     return xRegNo == regNo;
                 })
-                res.status(200).json({status:'success', token:token, username: d})
+
+                res.status(200).json({status:'success', token:token, username: user.name })
             }else{
                 res.status(401).json({status:'Invalid credentials'});
             }
