@@ -17,7 +17,6 @@ app.listen(3000,(res,err)=>{
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use(cors());
-console.log(process.env.private_key)
 admin.initializeApp({
   credential: admin.credential.cert(
     {
