@@ -4,7 +4,7 @@ const bodyParser=require('body-parser')
 const cors=require("cors");
 var admin = require("firebase-admin");
 var serviceAccount = require("./firebase.json");
-require('dotenv').config();
+// require('dotenv').config();
 
 app.listen(3000,(res,err)=>{
     if(err){
